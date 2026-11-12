@@ -22,7 +22,7 @@ export default function App(){
  const today=useMemo(()=>todayInVienna(),[]);
  const [token,setToken]=useState(''),[user,setUser]=useState<PortalUser|null>(null),[username,setUsername]=useState('support@v-med.at'),[password,setPassword]=useState(''),[busy,setBusy]=useState(false);
  const [userPanel,setUserPanel]=useState<'all'|'profiles'|'create'|'logins'>('all');
- const [tab,setTab]=useState<Tab>('dashboard'),[error,setError]=useState(''),[notice,setNotice]=useState('');
+ const [tab,setTab]=useState<Tab>(()=>window.location.hash==='#anfragen'?'requests':'dashboard'),[error,setError]=useState(''),[notice,setNotice]=useState('');
  const [staff,setStaff]=useState<Specialist[]>([]),[customers,setCustomers]=useState<Account[]>([]),[bookings,setBookings]=useState<Booking[]>([]);
  const [specialist,setSpecialist]=useState('DGKP-A'),[month,setMonth]=useState({year:Number(today.slice(0,4)),month:Number(today.slice(5,7))-1}),[selectedDay,setSelectedDay]=useState(today);
  const [days,setDays]=useState<Record<string,Day>>({}),[timeMode,setTimeMode]=useState<'free'|'busy'>('free'),[dayState,setDayState]=useState<'frei'|'besetzt'>('frei'),[windows,setWindows]=useState<{startMin:number;endMin:number}[]>([{startMin:420,endMin:1140}]);
